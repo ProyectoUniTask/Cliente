@@ -1,0 +1,16 @@
+.bigCalendar-container {
+    margin: 20px auto;
+    background-color: white;
+    height: 700px;
+    width: 1000px;
+    color: black;
+}
+.calendar-title {
+    font-size: 25px;
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.principal-titulo{
+    text-align: left;
+}

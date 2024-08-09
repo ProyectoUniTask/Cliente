@@ -1,0 +1,110 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './Styles.css';
+
+const Register = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:8080/project/register', formData);
+      console.log(response.data);
+
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      setError("Error al registrar. Inténtalo de nuevo.");
+    }
+  };
+
+  const handleCancel = () => {
+    navigate("/");
+};
+
+  
+  return (
+    <div className="contenedor">
+      <form onSubmit={handleSubmit}>
+        <h1 className="titulo-principal">UniTask</h1>
+        <h2 className="titulo">Crear usuario</h2>
+        <div>
+          <label htmlFor="firstName">Nombre: </label>
+          <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          value={formData.firstName}
+          onChange={handleChange}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="lastName">Apellido: </label>
+          <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          value={formData.lastName}
+          onChange={handleChange}
+          />
+        </div>
+
+        <div>
+        <label htmlFor="email">Correo: </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+         />
+        </div>
+
+        <div>
+        <label htmlFor="password">Contraseña: </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+         />
+        </div>
+
+        <div>
+        <label htmlFor="confirmPassword">Confirmar contraseña: </label>
+        <input
+          type="password"
+          id="confirmPassword"
+          name="confirmPassword"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+         />
+        </div>
+
+        <button className="btn" type="submit">Registrarme</button>
+        <button className="btn" type="button" onClick={handleCancel}>Cancelar</button>
+        <div className="mensaje-error">{error}</div>
+      </form>
+    </div>
+  );
+};
+
+export default Register;
