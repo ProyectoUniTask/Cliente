@@ -8,7 +8,6 @@ import SubjectEdit from './components/SubjectEdit';
 import ExamList from './components/ExamList';
 import ExamForm from './components/ExamForm';
 import ExamEdit from './components/ExamEdit';
-import MainComponent from './components/MainComponent';
 
 import './App.css';
 function App() {
