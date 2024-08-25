@@ -35,12 +35,12 @@ const SubjectList = () => {
 
   return (
     <div>
-      <h1 className="principal-titulo">UniTask</h1>
+      <h1 className="titulo-principal">UniTask</h1>
       <Link to="/home"> Home </Link> | 
-      <Link to="/project"> Project</Link> | 
-      <Link to="/subject"> Subject</Link> | 
-      <Link to="/exam"> Exam</Link> | 
-      <Link to="/grade"> Grade</Link>
+      <Link to="/project"> Project </Link> | 
+      <Link to="/subject"> Subject </Link> | 
+      <Link to="/exam"> Exam </Link> | 
+      <Link to="/grade"> Grade </Link>
       <div>
       <button 
           onClick={() => navigate(`/subject/new`)} 
@@ -48,10 +48,10 @@ const SubjectList = () => {
           Add Subject
           </button>
       </div>
-      <div className="list-subjects">
-        <div className="subject-grid">
+      <div className="list">
+        <div className="grid">
           {subjects.map((subject) => (
-            <div key={subject._id} className="subject-box">
+            <div key={subject._id} className="box">
               <h2 className="titulo">{subject.name}</h2>
               <p><strong>Description:</strong> {subject.description}</p>
               <p><strong>Duration:</strong> {subject.duration}</p>

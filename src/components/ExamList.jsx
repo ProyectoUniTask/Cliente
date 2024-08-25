@@ -35,12 +35,12 @@ const ExamList = () => {
 
   return (
     <div>
-      <h1 className="principal-titulo">UniTask</h1>
+      <h1 className="titulo-principal">UniTask</h1>
       <Link to="/home"> Home </Link> | 
-      <Link to="/project"> Project</Link> | 
-      <Link to="/subject"> Subject</Link> | 
-      <Link to="/exam"> Exam</Link> | 
-      <Link to="/grade"> Grade</Link>
+      <Link to="/project">Project </Link> | 
+      <Link to="/subject"> Subject </Link> | 
+      <Link to="/exam"> Exam </Link> | 
+      <Link to="/grade"> Grade </Link>
       <div>
       <button 
           onClick={() => navigate(`/exam/new`)} 
@@ -48,10 +48,10 @@ const ExamList = () => {
           Add Exam
           </button>
       </div>
-      <div className="list-subjects">
-        <div className="subject-grid">
+      <div className="list">
+        <div className="grid">
           {exams.map((exam) => (
-            <div key={exam._id} className="subject-box">
+            <div key={exam._id} className="box">
               <h2 className="titulo">{exam.title}</h2>
               <p><strong>Subject:</strong> {exam.subject}</p>
               <p><strong>Description:</strong> {exam.description}</p>
