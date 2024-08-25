@@ -33,7 +33,7 @@ input {
   color: black;
   font-size: 17px;
 }
-.btn {
+.boton, .btn-edit, .btn-delete, .btn-new{
   width: 35%;
   padding: 0.5rem;
   border: 2px solid black;
@@ -72,3 +72,26 @@ input {
 .titulo {
   color: black;
 }
+.principal-titulo{
+  text-align: left;
+}
+.subject-box {
+  width: 580px;
+  margin: auto;
+  padding: 2rem;
+  border: 2px solid black;
+  background-color: white;
+  margin-bottom: 20px;
+  font-size: 17px;
+  margin-top: 10px;
+}
+.subject-box p , .subject-box h2 {
+  text-align: left;
+}
+.list-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+

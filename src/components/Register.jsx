@@ -30,7 +30,7 @@ const Register = () => {
       navigate("/");
     } catch (error) {
       console.error(error);
-      setError("Error al registrar. Inténtalo de nuevo.");
+      setError("Error registering. Try again.");
     }
   };
 
@@ -43,9 +43,9 @@ const Register = () => {
     <div className="contenedor">
       <form onSubmit={handleSubmit}>
         <h1 className="titulo-principal">UniTask</h1>
-        <h2 className="titulo">Crear usuario</h2>
+        <h2 className="titulo">Create user</h2>
         <div>
-          <label htmlFor="firstName">Nombre: </label>
+          <label htmlFor="firstName">FirstName: </label>
           <input
           type="text"
           id="firstName"
@@ -56,7 +56,7 @@ const Register = () => {
         </div>
 
         <div>
-          <label htmlFor="lastName">Apellido: </label>
+          <label htmlFor="lastName">LastName: </label>
           <input
           type="text"
           id="lastName"
@@ -67,7 +67,7 @@ const Register = () => {
         </div>
 
         <div>
-        <label htmlFor="email">Correo: </label>
+        <label htmlFor="email">Gmail: </label>
         <input
           type="email"
           id="email"
@@ -78,7 +78,7 @@ const Register = () => {
         </div>
 
         <div>
-        <label htmlFor="password">Contraseña: </label>
+        <label htmlFor="password">Password: </label>
         <input
           type="password"
           id="password"
@@ -89,7 +89,7 @@ const Register = () => {
         </div>
 
         <div>
-        <label htmlFor="confirmPassword">Confirmar contraseña: </label>
+        <label htmlFor="confirmPassword">Confirm password: </label>
         <input
           type="password"
           id="confirmPassword"
@@ -99,8 +99,8 @@ const Register = () => {
          />
         </div>
 
-        <button className="btn" type="submit">Registrarme</button>
-        <button className="btn" type="button" onClick={handleCancel}>Cancelar</button>
+        <button className="boton" type="submit">Register</button>
+        <button className="boton" type="button" onClick={handleCancel}>Cancel</button>
         <div className="mensaje-error">{error}</div>
       </form>
     </div>

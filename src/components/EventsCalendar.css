@@ -3,7 +3,7 @@
     background-color: white;
     height: 700px;
     width: 1000px;
-    color: black;
+    color:  black;
 }
 .calendar-title {
     font-size: 25px;
@@ -13,4 +13,7 @@
 }
 .principal-titulo{
     text-align: left;
+}
+.navegacion {
+    margin-bottom: 20px;
 }

@@ -29,7 +29,7 @@ const Login = () => {
       navigate("/home");
     } catch (error) {
       console.error(error);
-      setError("Error al iniciar sesión.");
+      setError("Failed to log in.");
     }
   };
 
@@ -43,7 +43,7 @@ const Login = () => {
             <h1 className="titulo-principal">UniTask</h1>
             <h2 className="titulo">Login</h2>
             <div>
-                <label htmlFor="email">Correo: </label>
+                <label htmlFor="email">Gmail: </label>
                 <input
                 value={formData.email}
                 type="email"
@@ -53,7 +53,7 @@ const Login = () => {
            </div>
 
            <div>
-                <label htmlFor="password">Contraseña: </label>
+                <label htmlFor="password">Password: </label>
                 <input
                 value={formData.password}
                 type="password"
@@ -63,10 +63,10 @@ const Login = () => {
             </div>
 
             <div className="link-registrarse">
-                <Link to="/register" className="link">¿Aún no tienes una cuenta? Regístrate aquí</Link>
+                <Link to="/register" className="link">Don't have an account yet? Register here</Link>
            </div>
            
-           <button className="btn" type="submit">Acceder</button>
+           <button className="boton" type="submit">Access</button>
            <div className="mensaje-error">{error}</div>
         </form>
     </div>
