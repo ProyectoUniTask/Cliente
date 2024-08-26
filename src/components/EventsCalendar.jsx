@@ -16,7 +16,8 @@ const EventsCalendar = ({ events }) => {
         backgroundColor: event.color, 
         borderRadius: '5px',
         color: 'black',
-        fontSize: '15px',
+        marginTop: '6px',
+        fontSize: '17px',
         fontWeight: 'bold',
         border: '0px',
         display: 'flex',              
@@ -31,18 +32,22 @@ const EventsCalendar = ({ events }) => {
     <div className="bigCalendar-container">
       <h1 className="principal-titulo">UniTask</h1>
       <h2 className="calendar-title">Activities Calendar</h2>
+      <nav className="nav-links">
+        <Link to="/project"> Project </Link> | 
+        <Link to="/course"> Course </Link> | 
+        <Link to="/exam"> Exam </Link> | 
+        <Link to="/grade"> Grade </Link> | 
+        <Link to="/subject"> Subject </Link>
+      </nav>
       <FrasesAleatoria></FrasesAleatoria>
-      <Link to="/project">Project</Link> | 
-      <Link to="/subject"> Subject</Link> | 
-      <Link to="/exam"> Exam</Link> | 
-      <Link to="/grade"> Grade</Link>
+
       <div className="contenido">
       <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
-        style={{ height: 850, width: 1100, margin: "20px"}}
+        style={{ height: 850, width: 1350, margin: "20px"}}
         eventPropGetter={eventPropGetter} 
         messages={{
           next: "Next",

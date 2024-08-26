@@ -29,7 +29,7 @@ const ExamForm = () => {
                 description: '',
                 date: '',
             });
-            navigate("/exam/new");
+            navigate("/exam");
         } catch (error) {
             console.error(error);
             setError("Error adding the exam. Please try again.");
@@ -96,7 +96,7 @@ const ExamForm = () => {
                     />
                 </div>
 
-                <button className="boton" type="submit">Create Exam</button>
+                <button className="boton" type="submit">Add Exam</button>
                 <button className="boton" type="button" onClick={handleCancel}>Cancel</button>
 
                 <div>{error}</div>

@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const SubjectForm = () => {
   const [subject, setSubject] = useState({
     name: '',
-    description: '',
-    duration: '',
-    instructor: '',
-    date: ''
+    professor: '',
+    semester: '',
+    day: '',
+    startTime: '',
+    endTime: ''
   });
 
   const navigate = useNavigate();
@@ -21,21 +22,20 @@ const SubjectForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await Axios.post(
-        "http://localhost:8080/subject/new", subject
-      );
-      console.log(response);
+      const response = await Axios.post("http://localhost:8080/subject/new", subject);
+      console.log('Server response:', response);
       setSubject({
         name: '',
-        description: '',
-        duration: '',
-        instructor: '',
-        date: '',
+        professor: '',
+        semester: '',
+        day: '',
+        startTime: '',
+        endTime: ''
     });
-      navigate("/subject/new"); 
+      navigate("/subject");
     } catch (error) {
-      console.log(error);
-      alert('Error adding subject. Please try again.'); 
+      console.error('Error:', error.response ? error.response.data : error.message);
+      alert('Error adding subject. Please try again.');
     }
   };
 
@@ -49,23 +49,62 @@ const SubjectForm = () => {
       <h2 className="titulo-secundario">New Subject</h2>
       <div>
         <label>Name:</label>
-        <input type="text" name="name" value={subject.name} onChange={handleChange} required />
+        <input 
+        type="text" 
+        name="name" 
+        value={subject.name} 
+        onChange={handleChange} 
+        required 
+        />
       </div>
       <div>
-        <label>Description:</label>
-        <input type="text" name="description" value={subject.description} onChange={handleChange} required />
+        <label>Professor:</label>
+        <input 
+        type="text" 
+        name="professor" 
+        alue={subject.professor} 
+        onChange={handleChange} 
+        required 
+        />
       </div>
       <div>
-        <label>Duration:</label>
-        <input type="text" name="duration" value={subject.duration} onChange={handleChange} required />
+        <label>Semester:</label>
+        <input 
+        type="text" 
+        name="semester" 
+        value={subject.semester} 
+        onChange={handleChange} 
+        required 
+        />
       </div>
       <div>
-        <label>Instructor:</label>
-        <input type="text" name="instructor" value={subject.instructor} onChange={handleChange} required />
+        <label>Day:</label>
+        <input 
+        type="text" 
+        name="day" 
+        value={subject.day} 
+        onChange={handleChange} 
+        required />
       </div>
       <div>
-        <label>Date:</label>
-        <input type="date" name="date" value={subject.date} onChange={handleChange}/>
+        <label>Start Time:</label>
+        <input 
+        type="time" 
+        name="startTime" 
+        value={subject.startTime} 
+        onChange={handleChange} 
+        required 
+        />
+      </div>
+      <div>
+        <label>End Time:</label>
+        <input 
+        type="time" 
+        name="endTime" 
+        value={subject.endTime} 
+        onChange={handleChange} 
+        required 
+        />
       </div>
       <button className="boton" type="submit">Add Subject</button>
       <button className="boton" type="button" onClick={handleCancel}>Cancel</button>

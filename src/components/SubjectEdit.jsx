@@ -5,48 +5,41 @@ import { useNavigate, useParams } from 'react-router-dom';
 const SubjectEdit = () => {
   const [subject, setSubject] = useState({
     name: '',
-    description: '',
-    duration: '',
-    instructor: '',
-    date: ''
+    professor: '',
+    semester: '',
+    day: '',
+    startTime: '',
+    endTime: ''
   });
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const { id } = useParams();
 
   useEffect(() => {
-    const allSubject = async () => {
+    const fetchSubject = async () => {
       try {
         const response = await Axios.get(`http://localhost:8080/subject/${id}`);
         const subjectData = response.data;
-        setSubject({
-          ...subjectData,
-          date: formatDate(subjectData.date) 
-        });
+        setSubject(subjectData);
       } catch (error) {
         console.error('Error fetching subject', error);
         setError('Error fetching subject details.');
       }
     };
 
-    allSubject();
+    fetchSubject();
   }, [id]);
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toISOString().split('T')[0]; 
-  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSubject({ ...subject, [name]: value });
   };
 
-  const updateSubject = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await Axios.put(`http://localhost:8080/subject/${id}/edit`, subject);
-      navigate('/subject'); 
+      navigate('/subject');
     } catch (error) {
       console.error('Error updating subject', error);
       setError('Error updating subject. Please try again.');
@@ -54,37 +47,80 @@ const SubjectEdit = () => {
   };
 
   const handleCancel = () => {
-    navigate('/subject'); 
+    navigate('/subject');
   };
 
   return (
     <div>
-      <form onSubmit={updateSubject}>
-      <h1 className="titulo-principal">UniTask</h1>
-      <h2 className="titulo-secundario">Edit Subject</h2>
+      <form onSubmit={handleSubmit}>
+        <h1 className="titulo-principal">UniTask</h1>
+        <h2 className="titulo-secundario">Edit Subject</h2>
         <div>
-          <label>Name:</label>
-          <input type="text" name="name" value={subject.name} onChange={handleChange} required />
+          <label htmlFor="name">Name:</label>
+          <input 
+            type="text" 
+            id="name" 
+            name="name" 
+            value={subject.name} 
+            onChange={handleChange} 
+            required 
+          />
         </div>
         <div>
-          <label>Description:</label>
-          <input type="text" name="description" value={subject.description} onChange={handleChange} required />
+          <label htmlFor="professor">Professor:</label>
+          <input 
+            type="text" 
+            id="professor" 
+            name="professor" 
+            value={subject.professor} 
+            onChange={handleChange} 
+            required 
+          />
         </div>
         <div>
-          <label>Duration:</label>
-          <input type="text" name="duration" value={subject.duration} onChange={handleChange} required />
+          <label htmlFor="semester">Semester:</label>
+          <input 
+            type="text" 
+            id="semester" 
+            name="semester" 
+            value={subject.semester} 
+            onChange={handleChange} 
+            required 
+          />
         </div>
         <div>
-          <label>Instructor:</label>
-          <input type="text" name="instructor" value={subject.instructor} onChange={handleChange} required />
+          <label htmlFor="day">Day:</label>
+          <input 
+            type="text" 
+            id="day" 
+            name="day" 
+            value={subject.day} 
+            onChange={handleChange} 
+          />
         </div>
         <div>
-          <label>Date:</label>
-          <input type="date" name="date" value={subject.date} onChange={handleChange} />
+          <label htmlFor="startTime">startTime:</label>
+          <input 
+            type="time" 
+            id="startTime" 
+            name="startTime" 
+            value={subject.startTime} 
+            onChange={handleChange} 
+          />
+        </div>
+        <div>
+          <label htmlFor="endTime">endTime:</label>
+          <input 
+            type="time" 
+            id="endTime" 
+            name="endTime" 
+            value={subject.endTime} 
+            onChange={handleChange} 
+          />
         </div>
         <button className="boton" type="submit">Update Subject</button>
         <button className="boton" type="button" onClick={handleCancel}>Cancel</button>
-        <div>{error}</div>
+        {error && <div>{error}</div>}
       </form>
     </div>
   );

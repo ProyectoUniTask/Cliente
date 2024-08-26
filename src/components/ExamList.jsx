@@ -28,7 +28,7 @@ const ExamList = () => {
       setSubjects(exams.filter(exam => exam._id !== id));
       navigate('/exam');
     } catch (error) {
-      console.log("Error delete", error);
+      console.log("Error delete exam", error);
       setError(error.response?.data?.message);
     }
   };
@@ -36,11 +36,13 @@ const ExamList = () => {
   return (
     <div>
       <h1 className="titulo-principal">UniTask</h1>
-      <Link to="/home"> Home </Link> | 
-      <Link to="/project">Project </Link> | 
-      <Link to="/subject"> Subject </Link> | 
-      <Link to="/exam"> Exam </Link> | 
-      <Link to="/grade"> Grade </Link>
+      <nav className="nav-links">
+        <Link to="/home"> Home </Link> | 
+        <Link to="/project"> Project </Link> | 
+        <Link to="/course"> Course </Link> | 
+        <Link to="/grade"> Grade </Link> | 
+        <Link to="/subject"> Subject </Link>
+      </nav>
       <div>
       <button 
           onClick={() => navigate(`/exam/new`)} 
@@ -59,7 +61,7 @@ const ExamList = () => {
               <button 
                   onClick={() => navigate(`/exam/${exam._id}/edit`)} 
                   className="btn-edit">
-                  Edit
+                  Edit 
                 </button>
                 <button 
                   onClick={() => deleteExam(exam._id)}

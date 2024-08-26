@@ -1,8 +1,6 @@
 .bigCalendar-container {
     margin: 20px auto;
     background-color: white;
-    height: 1000px;
-    width: 1250px;
     color:  black;
 }
 .calendar-title {
@@ -12,7 +10,7 @@
     text-align: center;
 }
 .principal-titulo{
-    margin-left: 65px;
+    margin-left: 40px;
 }
 .navegacion {
     margin-bottom: 20px;
