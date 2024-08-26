@@ -59,7 +59,7 @@ const SubjectList = () => {
         </button>
       </div>
       <div className="subject-list">
-        {['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'].map(day => (
+        {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map(day => (
           <div key={day} className="day-column">
             <h2>{day}</h2>
             {groupedSubjects[day] && groupedSubjects[day].length > 0 ? (
