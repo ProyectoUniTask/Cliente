@@ -39,7 +39,6 @@ const CourseList = () => {
       <nav className="nav-links">
         <Link to="/home"> Home </Link> | 
         <Link to="/project"> Project </Link> | 
-        <Link to="/course"> Course </Link> | 
         <Link to="/exam"> Exam </Link> | 
         <Link to="/grade"> Grade </Link> | 
         <Link to="/subject"> Subject </Link>
